@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>#{msg['page_title_bill']}</title>
+        
+        <link href="/sky-tech-test/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/sky-tech-test/css/custom.css" rel="stylesheet" type="text/css" />
+    </h:head>
+
+    <h:body>
+        <div class="container">
+        
+        	<p:panel header="#{msg['content_your_statement']} - #{msg['label_currency_symbol']}#{billingDetailsPageBean.billDetailsViewBean.total}" escape="false">
+        
+	        	<div class="row bill-row">
+	        	
+	        		<div class="col-md-4">
+	        			<b>#{msg['content_date_generated']}</b> &nbsp; <h:outputText value="#{billingDetailsPageBean.billDetailsViewBean.statement.generated}" />
+	        		</div>
+	  				<div class="col-md-4">
+	  					<b>#{msg['content_date_due']}</b> &nbsp; <h:outputText value="#{billingDetailsPageBean.billDetailsViewBean.statement.due}" />
+	  				</div>
+	  				<div class="col-md-4">
+	  					<b>#{msg['content_period_covered']}</b> &nbsp; <h:outputText value="#{billingDetailsPageBean.billDetailsViewBean.statement.period.from}" /> 
+	  					-  <h:outputText value="#{billingDetailsPageBean.billDetailsViewBean.statement.period.to}" />
+	  				
+	  				</div>
+	        	
+	        	</div>
+	        	
+	        	<p:panel id="toggleablePackage" class="bill-row"
+	        		header="#{msg['content_your_package']} #{msg['label_currency_symbol']}#{billingDetailsPageBean.billDetailsViewBean.chosenPackage.total}" 
+	        		toggleable="true" collapsed="true" closable="false" toggleSpeed="500" closeSpeed="500" widgetVar="subscriptions">
+	        	
+		        	<div class="row">
+		        		<table class="table table-striped table-bordered">
+		        			<tr>
+		        				<th>#{msg['content_package_type']}</th>
+		        				<th>#{msg['content_package_name']}</th>
+		        				<th>#{msg['content_bill_cost']}</th>
+		        			</tr>
+		        		
+		        			<ui:repeat var="chosenPackage" value="#{billingDetailsPageBean.billDetailsViewBean.chosenPackage.subscriptions}">
+		 
+								<tr>
+									<td>#{chosenPackage.type}</td>
+									<td>#{chosenPackage.name}</td>
+									<td>#{msg['label_currency_symbol']}#{chosenPackage.cost}</td>
+								</tr>
+						 
+						   </ui:repeat>
+		        		</table>
+		        	</div>
+		        </p:panel>
+	        	
+	        	<p:panel id="toggleableCalls" header="#{msg['content_your_calls']} #{msg['label_currency_symbol']}#{billingDetailsPageBean.billDetailsViewBean.callCharges.total}" 
+	        		toggleable="true" collapsed="true" closable="false" toggleSpeed="500" closeSpeed="500" widgetVar="calls" class="bill-row">
+	        	
+		        	<div class="row">
+		        		<table class="table table-striped table-bordered">
+		        			<tr>
+		        				<th>#{msg['content_calls_called']}</th>
+		        				<th>#{msg['content_calls_duration']}</th>
+		        				<th>#{msg['content_bill_cost']}</th>
+		        			</tr>
+		        		
+		        			<ui:repeat var="call" value="#{billingDetailsPageBean.billDetailsViewBean.callCharges.calls}">
+		 
+								<tr>
+									<td>#{call.called}</td>
+									<td>#{call.duration}</td>
+									<td>#{msg['label_currency_symbol']}#{call.cost}</td>
+								</tr>
+						 
+						   </ui:repeat>
+		        		</table>
+		        	</div>
+		        </p:panel>
+	        	
+	        	<p:panel id="toggleableStore" class="bill-row"
+	        		header="#{msg['content_sky_store']} #{msg['label_currency_symbol']}#{billingDetailsPageBean.billDetailsViewBean.skyStore.total}" 
+	        		toggleable="true" collapsed="true" closable="false" toggleSpeed="500" closeSpeed="500" widgetVar="skyStore">
+		        	
+		        	<div class="row">
+		        		<b>#{msg['content_sky_store_your_rentals']}</b>
+		        	
+		        		<table class="table table-striped table-bordered">
+		        			<tr>
+		        				<th>#{msg['content_sky_store_title']}</th>
+		        				<th>#{msg['content_bill_cost']}</th>
+		        			</tr>
+		        		
+		        			<ui:repeat var="rental" value="#{billingDetailsPageBean.billDetailsViewBean.skyStore.rentals}">
+		 
+								<tr>
+									<td>#{rental.title}</td>
+									<td>#{msg['label_currency_symbol']}#{rental.cost}</td>
+								</tr>
+						 
+						   </ui:repeat>
+		        		</table>
+		        	</div>
+		        	
+		        	<div class="row">
+		        		<b>#{msg['content_sky_store_your_purchases']}</b>
+		        	
+		        		<table class="table table-striped table-bordered">
+		        			<tr>
+		        				<th>#{msg['content_sky_store_title']}</th>
+		        				<th>#{msg['content_bill_cost']}</th>
+		        			</tr>
+		        		
+		        			<ui:repeat var="purchase" value="#{billingDetailsPageBean.billDetailsViewBean.skyStore.buyAndKeep}">
+		 
+								<tr>
+									<td>#{purchase.title}</td>
+									<td>#{msg['label_currency_symbol']}#{purchase.cost}</td>
+								</tr>
+						 
+						   </ui:repeat>
+		        		</table>
+		        	</div>
+		        </p:panel>
+	        </p:panel>
+        </div>
+    </h:body>
+</html>

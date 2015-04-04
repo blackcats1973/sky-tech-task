@@ -1,0 +1,162 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://jsonschema.net",
+    "type": "object",
+    "properties": {
+        "statement": {
+            "id": "http://jsonschema.net/statement",
+            "type": "object",
+            "properties": {
+                "generated": {
+                    "id": "http://jsonschema.net/statement/generated",
+                    "type": "string"
+                },
+                "due": {
+                    "id": "http://jsonschema.net/statement/due",
+                    "type": "string"
+                },
+                "period": {
+                    "id": "http://jsonschema.net/statement/period",
+                    "type": "object",
+                    "properties": {
+                        "from": {
+                            "id": "http://jsonschema.net/statement/period/from",
+                            "type": "string"
+                        },
+                        "to": {
+                            "id": "http://jsonschema.net/statement/period/to",
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "required": [
+                "generated",
+                "due",
+                "period"
+            ]
+        },
+        "total": {
+            "id": "http://jsonschema.net/total",
+            "type": "number"
+        },
+        "package": {
+            "id": "http://jsonschema.net/package",
+            "javaType": "net.chris.integration.billing.dto.ChosenPackage",
+            "type": "object",
+            "properties": {
+                "subscriptions": {
+                    "id": "http://jsonschema.net/package/subscriptions",
+                    "type": "array",
+                    "items": {
+                        "id": "http://jsonschema.net/package/subscriptions/2",
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "id": "http://jsonschema.net/package/subscriptions/2/type",
+                                "type": "string"
+                            },
+                            "name": {
+                                "id": "http://jsonschema.net/package/subscriptions/2/name",
+                                "type": "string"
+                            },
+                            "cost": {
+                                "id": "http://jsonschema.net/package/subscriptions/2/cost",
+                                "type": "number"
+                            }
+                        }
+                    }
+                },
+                "total": {
+                    "id": "http://jsonschema.net/package/total",
+                    "type": "number"
+                }
+            }
+        },
+        "callCharges": {
+            "id": "http://jsonschema.net/callCharges",
+            "type": "object",
+            "properties": {
+                "calls": {
+                    "id": "http://jsonschema.net/callCharges/calls",
+                    "type": "array",
+                    "items": {
+                        "id": "http://jsonschema.net/callCharges/calls/27",
+                        "type": "object",
+                        "properties": {
+                            "called": {
+                                "id": "http://jsonschema.net/callCharges/calls/27/called",
+                                "type": "string"
+                            },
+                            "duration": {
+                                "id": "http://jsonschema.net/callCharges/calls/27/duration",
+                                "type": "string"
+                            },
+                            "cost": {
+                                "id": "http://jsonschema.net/callCharges/calls/27/cost",
+                                "type": "number"
+                            }
+                        }
+                    }
+                },
+                "total": {
+                    "id": "http://jsonschema.net/callCharges/total",
+                    "type": "number"
+                }
+            }
+        },
+        "skyStore": {
+            "id": "http://jsonschema.net/skyStore",
+            "type": "object",
+            "properties": {
+                "rentals": {
+                    "id": "http://jsonschema.net/skyStore/rentals",
+                    "type": "array",
+                    "items": {
+                        "id": "http://jsonschema.net/skyStore/rentals/0",
+                        "type": "object",
+                        "properties": {
+                            "title": {
+                                "id": "http://jsonschema.net/skyStore/rentals/0/title",
+                                "type": "string"
+                            },
+                            "cost": {
+                                "id": "http://jsonschema.net/skyStore/rentals/0/cost",
+                                "type": "number"
+                            }
+                        }
+                    }
+                },
+                "buyAndKeep": {
+                    "id": "http://jsonschema.net/skyStore/buyAndKeep",
+                    "type": "array",
+                    "items": {
+                        "id": "http://jsonschema.net/skyStore/buyAndKeep/1",
+                        "type": "object",
+                        "properties": {
+                            "title": {
+                                "id": "http://jsonschema.net/skyStore/buyAndKeep/1/title",
+                                "type": "string"
+                            },
+                            "cost": {
+                                "id": "http://jsonschema.net/skyStore/buyAndKeep/1/cost",
+                                "type": "number"
+                            }
+                        }
+                    }
+                },
+                "total": {
+                    "id": "http://jsonschema.net/skyStore/total",
+                    "type": "number"
+                }
+            }
+        }
+    },
+    "required": [
+        "statement",
+        "total",
+        "package",
+        "callCharges",
+        "skyStore"
+    ]
+}
