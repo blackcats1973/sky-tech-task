@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>net.chris</groupId>
 		<artifactId>sky-tech-test-parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 
 	<artifactId>sky-tech-test-web</artifactId>
